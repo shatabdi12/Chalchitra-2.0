@@ -1,36 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import './index.css'
+import useForm from '../../../useForm'
 
 const InputGamneType = ({ onMovieSearch }) => {
-  const [searchValue, setSearchValue] = useState('')
-
-  const onChangeMovieSearch = e => {
-    setSearchValue(e.target.value)
-  }
-
-  const onSubmitValue = e => {
-    e.preventDefault()
-    onMovieSearch(searchValue)
-    resetInputField()
-  }
-  const resetInputField = () => {
-    setSearchValue('')
-  }
+  const [values, handleSearch] = useForm({ search: '' })
 
   return (
     <div className="input-div">
       <form className="input-form">
         <input
-          value={searchValue}
-          onChange={onChangeMovieSearch}
+          name="search"
+          value={values.search}
+          onChange={handleSearch}
           placeholder="Search a movie..."
           type="text"
           className="input-field"
         />
         <input
           className="input-search"
-          onClick={onSubmitValue}
+          onSubmit={onMovieSearch(values.search)}
           type="submit"
           value="SEARCH"
         />

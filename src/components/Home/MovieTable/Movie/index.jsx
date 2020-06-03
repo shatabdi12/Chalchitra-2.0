@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import posed, { PoseGroup } from 'react-pose'
-import axios from 'axios'
+import useFetch from '../../../../useFetch'
 import Starred from './Starred'
 import Header from '../../../Header'
 import NoImg from '../../../../images/NoImage.png'
@@ -19,22 +19,9 @@ const PosedContainer = posed.div({
 const Movie = ({ addToList, favorites, match, removeFromList, watchLater }) => {
   const [isLoved, setLoved] = useState(false)
   const [addWatch, setWatch] = useState(false)
-  const [movieData, setMovieData] = useState('')
-  const [isLoading, setLoader] = useState(false)
   const MOVIE_ID = match.params.id
   const MOVIE_API_URL = `${PATH_BASE}${PATH_MOVIE}/${MOVIE_ID}?api_key=${API_KEY}&append_to_response=videos`
-  const poster_path = `${PATH_POSTER}${movieData.poster_path}`
-  const poster = movieData.poster_path === null ? NoImg : poster_path
-
-  useEffect(() => {
-    setLoader(true)
-    const fetchData = async () => {
-      const result = await axios(MOVIE_API_URL)
-      setLoader(false)
-      setMovieData(result.data)
-    }
-    fetchData()
-  }, [MOVIE_API_URL])
+  const { movieData, isLoading } = useFetch(MOVIE_API_URL)
 
   const favoriteMovie = () => {
     setLoved(true)
@@ -70,7 +57,11 @@ const Movie = ({ addToList, favorites, match, removeFromList, watchLater }) => {
                   <div className="column-movie-img">
                     <img
                       className="poster-img"
-                      src={poster}
+                      src={
+                        movieData.poster_path === null
+                          ? NoImg
+                          : `${PATH_POSTER}${movieData.poster_path}`
+                      }
                       alt={`The movie titled: ${movieData.original_title}`}
                     />
                     <div className="movie-actions">

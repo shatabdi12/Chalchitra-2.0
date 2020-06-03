@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../Header'
 import InputSearch from './InputSearch'
-import axios from 'axios'
+import useFetch from '../../useFetch'
 import PropTypes from 'prop-types'
 import MovieTable from './MovieTable'
 import posed, { PoseGroup } from 'react-pose'
@@ -23,30 +23,25 @@ const PosedContainer = posed.div({
 })
 
 const Home = ({ addToList, favorites, removeFromList, watchLater }) => {
-  const [movieData, setMovieData] = useState(null)
-  const [isLoading, setLoader] = useState(false)
-  const MOVIE_API_URL = `${PATH_BASE}${PATH_SEARCH}${PATH_MOVIE}?api_key=${API_KEY}&query=happy&${PATH_PAGE}${DEFAULT_PAGE}`
+  const defaultValue = 'happy'
+  const [value, setValue] = useState(() => {
+    const stickyValue = localStorage.getItem('value')
+    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
+  })
 
-  useEffect(() => {
-    setLoader(true)
-    const fetchData = async () => {
-      const result = await axios(MOVIE_API_URL)
-      setLoader(false)
-      setMovieData(result.data)
-    }
-    fetchData()
-  }, [MOVIE_API_URL])
+  const MOVIE_API_URL = `${PATH_BASE}${PATH_SEARCH}${PATH_MOVIE}?api_key=${API_KEY}&query=${value}&${PATH_PAGE}${DEFAULT_PAGE}`
+  const { movieData, isLoading } = useFetch(MOVIE_API_URL)
 
   const handleMovieSearch = searchValue => {
     if (searchValue) {
-      setLoader(true)
-      const URL = `${PATH_BASE}${PATH_SEARCH}${PATH_MOVIE}?api_key=${API_KEY}&query=${searchValue}&${PATH_PAGE}${DEFAULT_PAGE}`
-      return axios.get(URL).then(res => {
-        setLoader(false)
-        setMovieData(res.data)
-      })
+      setValue(searchValue)
     }
   }
+
+  useEffect(() => {
+    localStorage.setItem('value', JSON.stringify(value))
+  }, [value])
+
   return (
     <main>
       <Header />
