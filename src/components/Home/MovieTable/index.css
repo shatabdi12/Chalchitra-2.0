@@ -1,0 +1,38 @@
+.movie-table {
+  width: 19%;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  background-color: var(--table-bg-grey);
+  color: var(--dark);
+  opacity: 0.9;
+  padding-bottom: 5px;
+}
+.movie-table:hover {
+  background-color: var(--table-bg-hover);
+  border: 1px solid #2423234a;
+  opacity: 1;
+}
+.movie-img {
+  width: 100%;
+  padding: 0 10px;
+}
+@media only screen and (max-device-width: 1599px) {
+  .movie-table {
+    width: 23%;
+  }
+}
+@media only screen and (min-width: 850px) and (max-width: 1024px) {
+  .movie-table {
+    width: 48%;
+  }
+}
+@media only screen and (min-width: 599px) and (max-width: 850px) {
+  .movie-table {
+    width: 46%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .movie-table {
+    width: 100%;
+  }
+}

@@ -1,0 +1,31 @@
+:root {
+  --border-radius: 3px;
+  --scale: 10%;
+
+  /* Colors */
+  --primary: #d6d6d6;
+  --dark: #565252;
+  --light: #000000a6;
+  --white: #ffffff;
+  --gold: #fdcc0d;
+  --theme-blue: #108ee9;
+  --theme-blue-hover: #108ee9b0;
+  --table-bg-grey: #d3d3d34a;
+  --table-bg-hover: #c4c3c34a;
+  --light-grey: #eeeeeec7;
+  --icon-pos: #8080808a;
+  --icon-pos-hover: #808080e0;
+  --nav-item-hover: #80808014;
+  --addOn: #666;
+}
+.app-content {
+  margin: 15px 50px;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}

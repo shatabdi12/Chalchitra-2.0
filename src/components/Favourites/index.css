@@ -1,0 +1,147 @@
+.empty-list {
+  font-size: 14px;
+  padding: 40px;
+  text-align: center;
+  color: var(--dark);
+}
+.empty-favlist {
+  display: inline-block;
+  font-size: 18px;
+  margin: 25px;
+}
+.empty-addon {
+  color: var(--addOn);
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+}
+.favorite-movies {
+  position: relative;
+  padding: 20px 50px;
+  margin-left: 0;
+  margin-right: 0;
+  height: auto;
+  zoom: 1;
+  display: flex;
+  width: 100%;
+}
+.fav-movie-img {
+  width: var(--scale);
+  margin-top: 10px;
+  padding-bottom: 5px;
+  position: relative;
+}
+.fav-movie-data {
+  width: 90%;
+  margin-left: 50px;
+}
+.movie-img {
+  width: 100%;
+}
+.icon-pos {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  height: 50px;
+  background-color: var(--icon-pos);
+  padding: 3px;
+  z-index: 2;
+}
+.icon-pos:hover {
+  background-color: var(--icon-pos-hover);
+}
+.icon-pos svg {
+  cursor: pointer;
+}
+
+/* iPad in portrait & landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .fav-movie-img {
+    width: 20%;
+  }
+  .fav-movie-data {
+    width: 80%;
+  }
+}
+
+/* iphone 6, 7 & 8 */
+@media only screen and (max-device-width: 667px) and (min-device-width: 375px) {
+  .fav-movie-img {
+    width: 35%;
+  }
+  .fav-movie-data {
+    width: 50%;
+    margin-left: 10px;
+  }
+}
+
+/* iphone X */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .fav-movie-img {
+    width: 35%;
+  }
+  .fav-movie-data {
+    width: 50%;
+    margin-left: 10px;
+  }
+}
+/* Moto G4 ans Galaxy S5 */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+  .favorite-movies {
+    display: block;
+    text-align: center;
+  }
+  .fav-movie-img {
+    width: 100%;
+  }
+  .fav-movie-data {
+    width: 100%;
+    margin-left: 0px;
+  }
+  .movie-data-title {
+    display: block;
+  }
+}
+/* iphone 5/SE */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  .fav-movie-img {
+    width: 35%;
+  }
+  .fav-movie-data {
+    width: 50%;
+    margin-left: 10px;
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+  .favorite-movies {
+    display: block;
+    text-align: center;
+  }
+  .fav-movie-img {
+    width: 100%;
+  }
+  .fav-movie-data {
+    width: 100%;
+    margin-left: 0px;
+  }
+  .movie-data-title {
+    display: block;
+  }
+}
+@media only screen and (max-device-width: 767px) and (min-device-width: 668px) {
+  .fav-movie-img {
+    width: 35%;
+  }
+  .fav-movie-data {
+    width: 50%;
+    margin-left: 10px;
+  }
+}
+@media only screen and (max-device-width: 1300px) and (min-device-width: 1024px) {
+  .fav-movie-img {
+    width: 20%;
+  }
+  .fav-movie-data {
+    width: 80%;
+  }
+}

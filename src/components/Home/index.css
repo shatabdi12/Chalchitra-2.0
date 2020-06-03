@@ -1,0 +1,67 @@
+.table {
+  display: flex;
+  flex-flow: row wrap;
+  opacity: 1;
+  transform: none;
+  margin-top: 30px;
+}
+.empty-movielist {
+  display: inline-block;
+  font-size: 18px;
+  margin: 25px;
+}
+.sad-img {
+  width: var(--scale);
+}
+.tooltip {
+  position: relative;
+}
+.tooltip .tooltipText {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--dark);
+  color: #fff;
+  opacity: 0.8;
+  text-align: center;
+  border-radius: 3px;
+  padding: 3px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltipText {
+  visibility: visible;
+}
+
+/* iphone 6, 7 & 8 */
+@media only screen and (max-device-width: 667px) and (min-device-width: 375px) {
+  .sad-img {
+    width: 25%;
+  }
+  .empty-movielist {
+    margin: 20px;
+  }
+}
+/* Moto G4 ans Galaxy S5 */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+  .sad-img {
+    width: 25%;
+  }
+  .empty-movielist {
+    margin: 13px;
+  }
+}
+/* iphone 5/SE */
+@media screen and (device-aspect-ratio: 40/71) {
+  .sad-img {
+    width: 30%;
+  }
+  .empty-movielist {
+    margin: 20px;
+  }
+}
